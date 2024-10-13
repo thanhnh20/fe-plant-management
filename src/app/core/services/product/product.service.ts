@@ -4,7 +4,7 @@ import { RequestParams } from '../../models/generic/Request';
 import { ApiService } from '../generic/api.service';
 import { Observable } from 'rxjs';
 import { Response } from '../../models/generic/Response';
-import { Products } from '../../models/interface/Product';
+import { Product } from '../../models/interface/Product';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class ProductService {
     private apiService: ApiService
   ) { }
 
-  getFilterProduct(params?: RequestParams): Observable<Response<Products>>{
+  getFilterProduct(params?: RequestParams): Observable<Response<Product>>{
     return this.apiService.get(this.url.concat("/filter"), {
       params: params,
       responseType: 'json'
