@@ -75,7 +75,7 @@ export default class SignInComponent {
         email: this.formLogin.get("email")?.value,
         password: this.formLogin.get("password")?.value
       }
-      const id = this.nzMessageService.loading("Vui lòng chờ", {nzDuration: 0}).messageId
+      const id = this.nzMessageService.loading("Đang đăng nhập", {nzDuration: 0}).messageId
       this.authSerivce.login(loginRequest).pipe(
         finalize(() => {
           this.nzMessageService.remove(id)

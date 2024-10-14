@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xl-12">
       <div class="table-responsive">
-        <nz-table #editRowTable nzBordered nzTableLayout="fixed">
+        <nz-table #editRowTable [nzData]="products" nzBordered nzTableLayout="fixed" nzFrontPagination="false">
           <thead>
             <tr>
               <th>ID</th>
@@ -17,9 +17,18 @@
           <tbody>
             @for (data of editRowTable.data; track data) {
               <tr>
+                  <td>{{ data.id }}</td>
                   <td>{{ data.name }}</td>
-                  <td>{{ data.age }}</td>
-                  <td>{{ data.address }}</td>
+                  <td>{{ data.category }}</td>
+                  <td>{{ data.price }}</td>
+                  <td>{{ data.timeStamp }}</td>
+                  <td>{{ data.createdAt }}</td>
+                  <td>{{ data.updatedAt }}</td>
+                  <td class="wrap-icon">
+                    <span nz-icon nzType="edit" nzTheme="outline"></span>
+                  </td>
+
+                  <!-- <td>{{ data.id }}</td> -->
                   <!-- <td><a (click)="startEdit(data.id)">Edit</a></td>
                   <td><input type="text" nz-input [(ngModel)]="editCache[data.id].data.name" /></td>
                   <td><input type="text" nz-input [(ngModel)]="editCache[data.id].data.age" /></td>
@@ -31,7 +40,19 @@
               </tr>
             }
           </tbody>
+
         </nz-table>
+        <div class="pagination">
+          <nz-pagination
+          (nzPageIndexChange)="onPageIndexChange($event)"
+          [(nzPageIndex)]="pageable.page"
+          [nzTotal]="pageable.totalElements"
+          [nzSize]="nzSize" nzShowSizeChanger
+          [nzPageSize]="pageable.size"
+          [nzPageSizeOptions]="pageSizeOption"
+          (nzPageSizeChange)="onPageSizeChange($event)"
+          ></nz-pagination>
+        </div>
       </div>
   </div>
 </div>

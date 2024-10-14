@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  url = Constants.URL.concat("/admin");
+  url = Constants.URL.concat("/admins");
 
   constructor(
     private apiService: ApiService
