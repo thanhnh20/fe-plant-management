@@ -7,6 +7,8 @@ import { AdminComponent } from './theme/layout/admin/admin.component';
 import { GuestComponent } from './theme/layout/guest/guest.component';
 import { authGuard } from './core/gaurd/auth.guard';
 import { ProductsComponent } from './demo/pages/products/products.component';
+import { UsersComponent } from './demo/pages/users/users.component';
+import { OrdersComponent } from './demo/pages/orders/orders.component';
 
 const routes: Routes = [
 
@@ -15,10 +17,14 @@ const routes: Routes = [
     component: AdminComponent,
     canActivate: [authGuard],
     children: [
+      // {
+      //   path: '',
+      //   redirectTo: 'analytics',
+      //   pathMatch: 'full'
+      // },
       {
-        path: '',
-        redirectTo: 'analytics',
-        pathMatch: 'full'
+        path: 'orders-management',
+        component: OrdersComponent
       },
       {
         path: 'analytics',
@@ -28,6 +34,11 @@ const routes: Routes = [
         path: 'products-management',
         component: ProductsComponent
       },
+      {
+        path: 'users-management',
+        component: UsersComponent
+      },
+
       {
         path: 'component',
         loadChildren: () => import('./demo/ui-element/ui-basic.module').then((m) => m.UiBasicModule)

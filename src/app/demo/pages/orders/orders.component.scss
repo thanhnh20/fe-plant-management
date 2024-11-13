@@ -1,0 +1,53 @@
+.search {
+
+  width: 500px;
+  display: flex;
+}
+
+.pending{
+  color: #4099ff;
+}
+
+.cancelled{
+  color: red;
+}
+
+.shipping{
+  color: darkorange;
+}
+
+.delivered{
+  color: forestgreen;
+}
+
+.pagination{
+  margin: auto !important;
+  text-align: center !important;
+}
+
+.wrap-icon {
+  font-size: large;
+  // color: rgb(193, 203, 9) !important;
+  cursor: pointer;
+}
+
+.ant-message {
+  z-index: 100000 !important;
+}
+
+.ant-message-notice {
+  z-index: 100000 !important;
+}
+
+.head-search{
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 1rem;
+  font-size: 16px;
+  margin-bottom: 25px;
+  align-items: center;
+}
+
+.status{
+  width: 100px;
+}

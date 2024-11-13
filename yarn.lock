@@ -5366,10 +5366,10 @@ ng-apexcharts@^1.11.0:
   dependencies:
     tslib "^2.0.0"
 
-ng-zorro-antd@^18.1.1:
-  version "18.1.1"
-  resolved "https://registry.npmjs.org/ng-zorro-antd/-/ng-zorro-antd-18.1.1.tgz"
-  integrity sha512-YbJN/87XGsKbAwBJH7ci/01Y30QCwJsQU8FtVhtAd5JsB/NsBAfYfsIoPgch6ZUPZ3Jo2+3UA/pTCx1DliagHg==
+ng-zorro-antd@^18.2.0:
+  version "18.2.0"
+  resolved "https://registry.npmjs.org/ng-zorro-antd/-/ng-zorro-antd-18.2.0.tgz"
+  integrity sha512-IHvtut/QQ4JmascquwIdd6Xd73EdjbLFuXPo2UrOj9QioD/ap8bH+OrI1/66bLUGGlSEqHudmp6CFAvSYzUwlg==
   dependencies:
     "@angular/cdk" "^18.0.0"
     "@ant-design/icons-angular" "^18.0.0"

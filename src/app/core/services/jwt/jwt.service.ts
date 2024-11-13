@@ -14,15 +14,17 @@ export class JwtService {
   ) {
   }
 
-  addToken(token: string){
+  addToken(token: string) {
     const tokenExisted = this.cookieService.get(this.tokenName)
-    if(tokenExisted){
+    if (tokenExisted) {
       this.cookieService.delete(this.tokenName)
     }
-    this.cookieService.set(this.tokenName, token, {expires: 1});
+    const expirationDate = new Date();
+    expirationDate.setTime(expirationDate.getTime() + 60 * 60 * 1000);
+    this.cookieService.set(this.tokenName, token, { expires: expirationDate });
   }
 
-  logout(){
+  logout() {
     this.cookieService.delete(this.tokenName)
   }
 

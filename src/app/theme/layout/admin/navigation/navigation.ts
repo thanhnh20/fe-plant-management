@@ -27,6 +27,13 @@ export const NavigationItems: NavigationItem[] = [
     icon: 'feather icon-home'
   },
   {
+    id: 'ordersManagement',
+    title: 'Quản lý đơn hàng',
+    type: 'item',
+    url: '/orders-management',
+    icon: 'feather icon-shopping-cart'
+  },
+  {
     id: 'productsManagement',
     title: 'Quản lý sản phẩm',
     type: 'item',
@@ -37,15 +44,8 @@ export const NavigationItems: NavigationItem[] = [
     id: 'usersManagement',
     title: 'Quản lý người dùng',
     type: 'item',
-    url: '/user-management',
+    url: '/users-management',
     icon: 'feather icon-users'
-  },
-  {
-    id: 'ordersManagement',
-    title: 'Quản lý đơn hàng',
-    type: 'item',
-    url: '/orders-management',
-    icon: 'feather icon-shopping-cart'
   },
   {
     id: 'ui-component',

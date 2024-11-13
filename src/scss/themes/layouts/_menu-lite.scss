@@ -1196,6 +1196,7 @@
   position: relative;
   display: block;
   padding: 25px;
+  min-height: 100%;
 }
 
 .pcoded-main-container {
@@ -1416,6 +1417,7 @@
 
   .pcoded-content {
     padding: 25px 15px;
+    min-height: 100%;
   }
 
   .card {

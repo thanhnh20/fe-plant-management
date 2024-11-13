@@ -1,0 +1,62 @@
+<nz-drawer [nzBodyStyle]="{ overflow: 'auto' }" [nzMaskClosable]="false" [nzWidth]="720" [nzVisible]="visible"
+  [nzTitle]="title" [nzFooter]="footerTpl" (nzOnClose)="close()">
+  <form nz-form *nzDrawerContent [formGroup]="formProduct">
+    <input formControlName="id" nz-input hidden />
+    <div nz-row [nzGutter]="8">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label>Tên sản phẩm</nz-form-label>
+          <nz-form-control>
+            <input formControlName="name" nz-input placeholder="Vui lòng nhập tên" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label>Loại</nz-form-label>
+          <nz-form-control>
+            <nz-form-control>
+              <input formControlName="category" nz-input placeholder="Vui lòng nhập loại" />
+            </nz-form-control>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row [nzGutter]="8">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label>Giá</nz-form-label>
+          <nz-form-control>
+            <input type="number" formControlName="price" nz-input placeholder="Vui lòng nhập giá" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label>Hình ảnh</nz-form-label>
+          <nz-form-control>
+            <input formControlName="imageUrl" nz-input placeholder="Vui lòng nhập hình ảnh" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row [nzGutter]="8">
+      <div nz-col nzSpan="24">
+        <nz-form-item>
+          <nz-form-label>Description</nz-form-label>
+          <nz-form-control>
+            <textarea formControlName="description" nz-input placeholder="Vui lòng nhập mô tả" [nzAutosize]="{ minRows: 4, maxRows: 4 }"></textarea>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+  </form>
+
+  <ng-template #footerTpl>
+    <div style="float: right">
+      <button nz-button style="margin-right: 8px;" (click)="close()">Cancel</button>
+      <button *ngIf="isEdit" [ngClass]="{'disabled': !formProduct.valid}" nz-button nzType="primary" (click)="onUpdateSubmit()">Cập nhật</button>
+      <button *ngIf="!isEdit" [ngClass]="{'disabled': !formProduct.valid}" nz-button nzType="primary" (click)="onCreateSubmit()">Tạo mới</button>
+    </div>
+  </ng-template>
+</nz-drawer>
