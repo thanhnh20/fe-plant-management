@@ -55,8 +55,8 @@
               <td class="wrap-icon">
                 <span (click)="onAction(data.status, data.id)" class="edit-product" nz-icon nzType="edit" nzTheme="outline"></span>
               </td>
-              <td style="color: red;">
-                <span (click)="onAction(data.status, data.id)" class="edit-product" nz-icon nzType="close" nzTheme="outline"></span>
+              <td class="wrap-icon" style="color: red;">
+                <span (click)="cancelOrder(data.id)" class="edit-product" nz-icon nzType="close" nzTheme="outline"></span>
               </td>
             }@else {
               <td>N/A</td>
