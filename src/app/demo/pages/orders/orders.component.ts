@@ -16,6 +16,8 @@ import { PaginationResponse, Response } from 'src/app/core/models/generic/Respon
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { OrderDetailComponent } from "./order-detail/order-detail.component";
+import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-orders',
@@ -29,8 +31,9 @@ import { FormsModule } from '@angular/forms';
     EditProductComponent,
     NzInputModule,
     CommonModule,
-    FormsModule
-  ],
+    FormsModule,
+    OrderDetailComponent
+],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.scss'
 })
@@ -41,11 +44,14 @@ export class OrdersComponent {
   nzSize: NzSizeDSType = "default";
   status: boolean = false;
   statusSearch: string[] = [];
-  orderId: string = ""
+  orderId: string = "";
+  orderDetailId: string = "";
+  visibleOrderDetail: boolean = false
 
   constructor(
     private orderService: OrderService,
-    private nzMessageService: NzMessageService
+    private nzMessageService: NzMessageService,
+    // private modal: NzModalService
   ) {
     this.orders = []
     this.pageable = {
@@ -58,6 +64,25 @@ export class OrdersComponent {
 
   ngOnInit(){
     this.getFilterOrders()
+  }
+
+  onOrderDetail(orderId: number){
+    this.orderDetailId = orderId.toString()
+    this.visibleOrderDetail = true
+    // this.openDetailModal()
+  }
+
+  // openDetailModal(): void {
+  //   const modalRef: NzModalRef<OrderDetailComponent> = this.modal.create({
+  //     nzContent: OrderDetailComponent,
+  //     nzFooter: null
+  //   });
+  //   modalRef.componentInstance!.orderId = this.orderId;
+  //   modalRef.componentInstance!.visible = this.visibleOrderDetail;
+  // }
+
+  onCloseOrderDetail(){
+    this.visibleOrderDetail = false;
   }
 
   onPageIndexChange(pageChange: number) {
@@ -129,6 +154,7 @@ export class OrdersComponent {
   }
 
   onSearchStatus(value: string){
+    this.pageable.page = 1;
     if(this.statusSearch.some(item => item == value)){
       this.statusSearch = this.statusSearch.filter(item => item != value)
     }else{
@@ -157,4 +183,6 @@ export class OrdersComponent {
       }
     }
   }
+
+
 }

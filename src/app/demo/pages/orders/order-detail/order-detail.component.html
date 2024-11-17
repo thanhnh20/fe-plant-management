@@ -1,0 +1,49 @@
+<nz-drawer [nzClosable]="false" [nzVisible]="visible" nzPlacement="right" nzTitle="Basic Drawer" (nzOnClose)="close()"
+  [nzWidth]="720" nzTitle="Chi tiết">
+  <ng-container *nzDrawerContent>
+    <nz-descriptions [nzTitle]="title" nzBordered>
+      <nz-descriptions-item nzTitle="Username" [nzSpan]="2">{{orderDetail.user_name}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Phone" [nzSpan]="2">{{orderDetail.user_phone}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Order Time" [nzSpan]="2">{{orderDetail.createdAt}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Payment" [nzSpan]="2">
+        {{orderDetail.payment_method}}
+      </nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Status" [nzSpan]="2">
+        @if (orderDetail.status == "pending") {
+          <nz-badge nzStatus="processing" nzText="Pending"></nz-badge>
+        }@else if(orderDetail.status == "shipping"){
+          <nz-badge nzStatus="warning" nzText="Shipping"></nz-badge>
+        }@else if (orderDetail.status == "delivered") {
+          <nz-badge nzStatus="success" nzText="Delivered"></nz-badge>
+        }@else if (orderDetail.status == "cancelled") {
+          <nz-badge nzStatus="error" nzText="Cancelled"></nz-badge>
+        }
+      </nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Amount" [nzSpan]="2">{{orderDetail.total_price}}đ</nz-descriptions-item>
+    </nz-descriptions>
+    <nz-table #basicTable [nzData]="orderDetail.products" nzFrontPagination="false">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Quantity</th>
+          <th>Image</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (data of basicTable.data; track data) {
+          <tr>
+            <td>{{ data.name }}</td>
+            <td>{{ data.quantity }}</td>
+            <td>
+              <img [src]="data.imageUrl" alt="">
+            </td>
+            <td>
+              {{data.price}}
+            </td>
+          </tr>
+        }
+      </tbody>
+    </nz-table>
+  </ng-container>
+</nz-drawer>

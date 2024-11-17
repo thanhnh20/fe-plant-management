@@ -35,10 +35,11 @@
             <th>Total Price</th>
             <th>Order Date</th>
             <th>Time Update</th>
-            <th>Thanh toán</th>
+            <th>Payment</th>
             <th>Status</th>
-            <th>Cập nhật</th>
-            <th>Hủy bỏ</th>
+            <th>Update</th>
+            <th>Cancel</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -51,6 +52,7 @@
             <td>{{ data.updatedAt }}</td>
             <td>{{ data.payment_method }}</td>
             <td [class]="data.status">{{ data.status }}</td>
+
             @if(data.status != 'cancelled' && data.status !='delivered' ){
               <td class="wrap-icon">
                 <span (click)="onAction(data.status, data.id)" class="edit-product" nz-icon nzType="edit" nzTheme="outline"></span>
@@ -62,7 +64,9 @@
               <td>N/A</td>
               <td>N/A</td>
             }
-
+            <td >
+              <button (click)="onOrderDetail(data.id)" class="wrap-detail">Detail</button>
+            </td>
           </tr>
           }
         </tbody>
@@ -76,4 +80,6 @@
         [nzPageSizeOptions]="pageSizeOption" (nzPageSizeChange)="onPageSizeChange($event)"></nz-pagination>
     </div>
   </div>
+  <app-order-detail (onClose)="onCloseOrderDetail()" [visible]="visibleOrderDetail" [orderId]="orderDetailId"></app-order-detail>
 </div>
+
